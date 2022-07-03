@@ -4,8 +4,14 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
+variables: 
   buildConfiguration: 'Release'
+
+steps:
+
+- task: DockerInstaller@0
+  inputs:
+    dockerVersion: '17.09.0-ce'
 
 - script: docker network create internet && docker run -d -p 27017-27019:27017-27019 --net=internet --name database_mongo_stone mongo:latest
   displayName: Build Mongo Container
