@@ -1,5 +1,20 @@
+using WebApiStone.Settings;
+using WebApiStone.Services;
+using WebApiStone.Business;
+using FluentValidation.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<DatabaseSettings>(
+    builder.Configuration.GetSection("DatabaseSettings"));
+
+builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IReportService, ReportService>();
+builder.Services.AddScoped<IDatabaseConnection, DatabaseConnection>();
+
+
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<PersonBusiness>());
 
 
 builder.Services.AddControllers();
@@ -22,3 +37,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

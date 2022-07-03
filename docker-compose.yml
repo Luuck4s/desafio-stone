@@ -9,26 +9,43 @@ services:
     - PGID=1000
     ports:
     - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    networks: 
+      - internet
 
   api:
     container_name: web_api_stone
     depends_on:
       - database
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
+     - "DatabaseSettings:ConnectionString=mongodb://database_mongo_stone:27017"
+     - "DatabaseSettings:DatabaseName=StoneDatabase"
+     - "DatabaseSettings:CollectionName=DemographicCensus"
     build:
       context: ./WebApiStone
       dockerfile: ./WebApiStone/Dockerfile
     ports:
       - 5000:80
+    restart: always
+    networks: 
+      - internet
 
   app:
     container_name: web_app_stone
-    depends_on:
-      - api
     build:
       context: ./WebAppStone/
       dockerfile: ./Dockerfile
     ports:
       - 9000:80
+    restart: always
+    networks: 
+      - internet
       
 volumes:
   mongo_data:
+
+networks:
+  internet:
+    name: stone

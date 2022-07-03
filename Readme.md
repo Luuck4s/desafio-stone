@@ -1,5 +1,5 @@
 <h1  align="center">
-<img  alt="Desafio Stone"  title="#Desafio Stone"  src=".github/logo-stone.png"  width="250px" />
+<img  alt="Desafio Stone"  title="#Desafio Stone"  src=".github/images/logo-stone.png"  width="250px" />
 </h1>
 
 <h4  align="center">
