@@ -16,10 +16,10 @@ steps:
 - script: docker network create internet && docker run -d -p 27017-27019:27017-27019 --net=internet --name database_mongo_stone mongo:latest
   displayName: Build Mongo Container
 
-- script: docker build --file ./WebApiStone/WebApiStone.Tests/WebApiStone.Test.Dockerfile --tag webApiStone.test ./WebApiStone.Tests
+- script: docker build --file ./WebApiStone/WebApiStone.Tests/WebApiStone.Test.Dockerfile --tag webapistone.test ./WebApiStone.Tests
   displayName: Build Test Container Api
 
-- script: docker run --net=internet webApiStone.test
+- script: docker run --net=internet webapistone.test
   displayName: Test Api Container
 
 - script: docker build -f ./WebApiStone/WebApiStone/Dockerfile --build-arg prod="prod" ./WebApiStone
