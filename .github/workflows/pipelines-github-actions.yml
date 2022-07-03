@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Mongo Container
+      run: docker network create internet && docker run -d -p 27017-27019:27017-27019 --net=internet --name database_mongo_stone mongo:latest
+    
+    - name: Build Test Container Api
+      run: docker build --file ./WebApiStone/WebApiStone.Tests/WebApiStone.Test.Dockerfile --tag webApiStone.test ./WebApiStone.Tests
+      
+    - name: Test Api Container
+      run: docker run --net=internet webApiStone.test
+      
+    - name: Build Container API
+      run: docker build -f ./WebApiStone/WebApiStone/Dockerfile --build-arg prod="prod" ./WebApiStone
