@@ -7,5 +7,5 @@ RUN dotnet restore ./WebApiStone/WebApiStone.csproj
 FROM build AS test
 WORKDIR /test
 COPY . .
-ENTRYPOINT ["dotnet", "test", "./WebApiStone.Tests/WebApiStone.Tests.csproj","--logger:trx"]
+ENTRYPOINT ["dotnet", "test", "./WebApiStone.Tests/WebApiStone.Tests.csproj"]
 

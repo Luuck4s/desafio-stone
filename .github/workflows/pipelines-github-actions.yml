@@ -8,13 +8,15 @@ on:
 
 jobs:
 
-  test: 
+  build: 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Create Network
+      run: docker network create internet 
+    
     - name: Build Mongo Container
-      run: docker network create internet && docker run -d -p 27017-27019:27017-27019 --net=internet --name database_mongo_stone mongo:latest
+      run: docker run -d -p 27017:27017 --net=internet --name database_mongo_stone mongo:latest
     
     - name: Build Test Container Api
       run: docker build --file ./WebApiStone/WebApiStone.Test.Dockerfile --tag webapistone.test ./WebApiStone
@@ -22,11 +24,6 @@ jobs:
     - name: Test Api Container
       run: docker run --net=internet webapistone.test
 
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    
     - name: Build Container API
       run: docker build -f ./WebApiStone/WebApiStone/Dockerfile --build-arg prod="prod" ./WebApiStone
+   
