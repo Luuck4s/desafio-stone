@@ -20,13 +20,8 @@ jobs:
       run: docker build --file ./WebApiStone/WebApiStone.Test.Dockerfile --tag webapistone.test ./WebApiStone
       
     - name: Test Api Container
-      run: docker run --net=internet webapistone.test
+      run: docker run --net=internet -e "DatabaseSettings:ConnectionString=mongodb://database_mongo_stone:27017" -e "DatabaseSettings:CollectionName=DemographicCensus" -e "DatabaseSettings:DatabaseName=StoneDatabase" webapistone.test
 
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    
     - name: Build Container API
       run: docker build -f ./WebApiStone/WebApiStone/Dockerfile --build-arg prod="prod" ./WebApiStone
+    
