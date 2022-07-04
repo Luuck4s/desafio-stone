@@ -26,7 +26,7 @@ jobs:
       run: docker build --file ./WebApiStone/WebApiStone.Test.Dockerfile --tag webapistone.test ./WebApiStone
       
     - name: Test Api Container
-      run: docker run --net=internet -e API_URL="http://web_api_stone:5000/api"  webapistone.test
+      run: docker run --net=internet -e API_URL="http://webapistone:5000/api"  webapistone.test
 
     - name: Build Container API
       run: docker build --file ./WebApiStone/WebApiStone/Dockerfile --build-arg prod="prod" ./WebApiStone
