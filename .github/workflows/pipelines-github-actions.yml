@@ -19,11 +19,11 @@ jobs:
       run: docker run -d -p 27017:27017 --net=internet --name database_mongo_stone mongo:latest
     
     - name: Build Test Container Api
-      run: docker build --file ./WebApiStone/WebApiStone.Test.Dockerfile --tag webapistone.test ./WebApiStone
+      run: docker build --file ./WebApiStone/WebApiStone.Test.Dockerfile --tag webapistone.test .
       
     - name: Test Api Container
       run: docker run --net=internet webapistone.test
 
     - name: Build Container API
-      run: docker build -f ./WebApiStone/WebApiStone/Dockerfile --build-arg prod="prod" ./WebApiStone
+      run: docker build -f ./WebApiStone/WebApiStone/Dockerfile --build-arg prod="prod" .
    
