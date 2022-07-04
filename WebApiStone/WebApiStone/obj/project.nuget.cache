@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6hleCtNJ7ZrZleFJ1g2NUAxmOOoEm1MzzDEOmPkbLt9hE0QHpv2Bf+rGddmBp6n4vroRblQt8iVsIhidazKCDg==",
+  "dgSpecHash": "aOGOuBLtD/nIYmPa2aIIenXlWHrrjvofNzHdrlhZHaNRxYHdmbJ6D4YhFJEdBnJ5FQo7v7V5cniYNWFLfchWOQ==",
   "success": true,
-  "projectFilePath": "d:\\Workspace\\desafio-stone\\WebApiStone\\WebApiStone\\WebApiStone.csproj",
+  "projectFilePath": "D:\\Workspace\\desafio-stone\\WebApiStone\\WebApiStone\\WebApiStone.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucas Lima\\.nuget\\packages\\castle.core\\5.0.0\\castle.core.5.0.0.nupkg.sha512",
     "C:\\Users\\Lucas Lima\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
