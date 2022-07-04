@@ -16,6 +16,11 @@ public class Person
         this.Education = education;
     }
 
+    public Person()
+    {
+
+    }
+
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; } = null!;

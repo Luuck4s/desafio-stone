@@ -11,7 +11,7 @@ namespace WebApiStone.Tests
     public class PersonTests
     {
 
-        private Person PERSON_VALID = new(null, "Lucas", "Lima", SexValues.MALE, SkinColorValues.CAUCASIAN, EducationValues.HIGH_SCHOOL);
+        private Person PERSON_VALID = new(string.Empty, "Lucas", "Lima", SexValues.MALE, SkinColorValues.CAUCASIAN, EducationValues.HIGH_SCHOOL);
 
         private Mock<IDatabaseConnection> mockDatabaseConnection;
         private PersonService personService;

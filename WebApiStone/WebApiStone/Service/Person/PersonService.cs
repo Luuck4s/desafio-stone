@@ -1,6 +1,7 @@
 ﻿using WebApiStone.Entities;
 using WebApiStone.Settings;
 using MongoDB.Driver;
+using WebApiStone.Models;
 
 namespace WebApiStone.Services;
 

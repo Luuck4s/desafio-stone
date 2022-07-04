@@ -1,4 +1,5 @@
 ﻿using WebApiStone.Entities;
+using WebApiStone.Models;
 
 namespace WebApiStone.Services;
 
@@ -28,19 +29,24 @@ public class ReportService: IReportService
 
     private async Task<List<FamilyTreePeople>> GetFamilyTreePeople(string id, int level)
     {
-        Person person = await _personService.GetById(id);
-        FamilyTreePeople personTree = TransformPersonToFamilyTreePeople(person);
-
         List<FamilyTreePeople> familyPeople = new List<FamilyTreePeople>();
-        await getAscendantsRecursive(person, familyPeople, level, 0);
-        await getDescendantsRecursive(person, familyPeople, level, 0);
-
-        if(familyPeople.Count > 0 && !familyPeople.Exists((e) => e.Id == personTree.Id))
+        Person? person = await _personService.GetById(id);
+        if(person != null)
         {
-            familyPeople.Insert(0, personTree);   
+            FamilyTreePeople personTree = TransformPersonToFamilyTreePeople(person);
+
+            
+            await getAscendantsRecursive(person, familyPeople, level, 0);
+            await getDescendantsRecursive(person, familyPeople, level, 0);
+
+            if (familyPeople.Count > 0 && !familyPeople.Exists((e) => e.Id == personTree.Id))
+            {
+                familyPeople.Insert(0, personTree);
+            }
         }
 
         return familyPeople;
+
     }
 
     private async Task getAscendantsRecursive(Person person, List<FamilyTreePeople> list, int levelLimit, int actualLevel)
@@ -71,9 +77,9 @@ public class ReportService: IReportService
         }
     }
 
-    private async Task getDescendantsRecursive(Person person, List<FamilyTreePeople> list, int levelLimit, int actualLevel)
+    private async Task getDescendantsRecursive(Person? person, List<FamilyTreePeople> list, int levelLimit, int actualLevel)
     {
-        if(actualLevel < levelLimit){
+        if(actualLevel < levelLimit && person != null && !String.IsNullOrEmpty(person.Id)){
             Tuple<List<Person>, List<FamilyTreePeople>> retorno = await GetDescendantsPersonTree(person.Id);
 
             foreach (var item in retorno.Item2)
@@ -94,9 +100,16 @@ public class ReportService: IReportService
  
     private async Task<Tuple<Person,FamilyTreePeople>> GetPersonTree(string id)
     {
-        Person person = await _personService.GetById(id);
-        FamilyTreePeople tree = TransformPersonToFamilyTreePeople(person);
-        return new Tuple<Person, FamilyTreePeople>(person, tree);
+        var result = new Tuple<Person, FamilyTreePeople>(new Person(), new FamilyTreePeople());
+        Person? person = await _personService.GetById(id);
+        if(person != null)
+        {
+            FamilyTreePeople tree = TransformPersonToFamilyTreePeople(person);
+            result = Tuple.Create(person, tree);
+        }
+
+        return result;
+
     }
 
      private async Task<Tuple<List<Person>, List<FamilyTreePeople>>> GetDescendantsPersonTree(string id)
@@ -107,12 +120,18 @@ public class ReportService: IReportService
     }
 
     private FamilyTreePeople TransformPersonToFamilyTreePeople(Person person){
-        return new FamilyTreePeople(){
-            Id = person.Id,
-            Name = person.Name,
-            FatherId = person.FatherID,
-            MotherId = person.MotherID
-        };
+        if(person != null && !String.IsNullOrEmpty(person.Id))
+        {
+            return new FamilyTreePeople()
+            {
+                Id = person.Id,
+                Name = person.Name,
+                FatherId = person.FatherID,
+                MotherId = person.MotherID
+            };
+        }
+
+        return new FamilyTreePeople();
     }
 
     private List<FamilyTreeRelations> GetFamilyTreeRelations(List<FamilyTreePeople> people)

@@ -1,4 +1,4 @@
-﻿using WebApiStone.Entities;
+﻿using WebApiStone.Models;
 
 namespace WebApiStone.Services
 {

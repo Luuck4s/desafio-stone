@@ -1,6 +1,7 @@
 ﻿using WebApiStone.Entities;
 using Microsoft.AspNetCore.Mvc;
 using WebApiStone.Services;
+using WebApiStone.Models;
 
 namespace WebApiStone.Controllers;
 

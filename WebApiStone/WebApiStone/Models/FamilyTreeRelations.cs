@@ -1,4 +1,4 @@
-﻿namespace WebApiStone.Entities
+﻿namespace WebApiStone.Models
 {
     public class FamilyTreeRelations
     {
