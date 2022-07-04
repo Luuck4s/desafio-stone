@@ -20,7 +20,7 @@ jobs:
       run: docker build --file ./WebApiStone/WebApiStone/Dockerfile --build-arg prod="test" --tag webapistone.api ./WebApiStone
 
     - name: Start Container API
-      run: docker run --name webapistone --net=internet  webapistone.api
+      run: docker run -d --name webapistone --net=internet  webapistone.api
     
     - name: Build Test Container Api
       run: docker build --file ./WebApiStone/WebApiStone.Test.Dockerfile --tag webapistone.test ./WebApiStone
