@@ -21,22 +21,22 @@ export class PersonService {
     if(name != ""){
       params.append('name', name);
     }
-    return this.http.get<ResultPerson>(`${environment.api_base_url}/Person/GetAll?${params.toString()}`)
+    return this.http.get<ResultPerson>(`${environment.api_base_url}/api/Person/GetAll?${params.toString()}`)
   }
 
   get(id: string): Observable<Person> {
-    return this.http.get<Person>(`${environment.api_base_url}/Person/${id}`)
+    return this.http.get<Person>(`${environment.api_base_url}/api/Person/${id}`)
   }
 
   create(data: any): Observable<any>{
-    return this.http.post<Person>(`${environment.api_base_url}/Person`, data)
+    return this.http.post<Person>(`${environment.api_base_url}/api/Person`, data)
   }
 
   delete(id: string): Observable<any>{
-    return this.http.delete<Person>(`${environment.api_base_url}/Person/${id}`)
+    return this.http.delete<Person>(`${environment.api_base_url}/api/Person/${id}`)
   }
 
   update(data: Person): Observable<any>{
-    return this.http.put<Person>(`${environment.api_base_url}/Person/${data.id}`,data)
+    return this.http.put<Person>(`${environment.api_base_url}/api/Person/${data.id}`,data)
   }
 }

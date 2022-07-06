@@ -16,7 +16,9 @@ import { FormsModule } from '@angular/forms';
 import { TreeComponent } from './shared/components/tree-view/tree-view.component';
 import {MatIconModule} from '@angular/material/icon';
 import { NavBarComponent } from './shared/components/navbar/navbar.component';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { NavBarComponent } from './shared/components/navbar/navbar.component';
     PersonComponent,
     ModalPersonComponent,
     TreeComponent,
-    NavBarComponent
+    NavBarComponent,
+    DashboardComponent
   ],
   imports: [
     FormsModule,
@@ -38,7 +41,9 @@ import { NavBarComponent } from './shared/components/navbar/navbar.component';
     BrowserAnimationsModule,
     MatInputModule,
     MatSnackBarModule,
-    MatIconModule
+    MatIconModule,
+    NgxChartsModule,
+    MatPaginatorModule
   ],
   providers: [
     {

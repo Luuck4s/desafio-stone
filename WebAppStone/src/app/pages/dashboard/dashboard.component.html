@@ -1,0 +1,84 @@
+<div>
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div>
+      <div class="grid grid-cols-12 gap-6 p-4">
+        <div class="col-span-3">
+          <mat-form-field>
+            <mat-label class="text-sm font-medium text-gray-700">Nome</mat-label>
+            <input matInput placeholder="Ex. José" (input)="handleSearchByName($event)">
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-3">
+          <mat-form-field appearance="fill">
+            <mat-label class="text-sm font-medium text-gray-700">Cor</mat-label>
+            <mat-select value="Todos" (selectionChange)="handleSearchBySkinColor($event)">
+              <mat-option *ngFor="let item of skinColorOptions"   [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-3">
+          <mat-form-field appearance="fill">
+            <mat-label class="text-sm font-medium text-gray-700">Escolaridade</mat-label>
+            <mat-select value="Todos"  (selectionChange)="handleSearchByEscolaridade($event)">
+              <mat-option *ngFor="let item of educationOptions" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-3">
+          <mat-form-field appearance="fill">
+            <mat-label class="text-sm font-medium text-gray-700">Sexo</mat-label>
+            <mat-select value="Todos" (selectionChange)="handleSearchBySex($event)">
+              <mat-option *ngFor="let item of sexOptions" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+          <div class="text-lg font-medium text-gray-500 truncate">
+            Total de pessoas
+          </div>
+          <div class="mt-1 text-9xl flex text-center justify-center items-center h-full font-semibold text-gray-900">
+            {{result.total}}
+          </div>
+        </div>
+
+        <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+          <div class="text-lg font-medium text-gray-500 truncate">
+            Pessoas por Escolaridade
+          </div>
+          <div class="mt-1 flex justify-center items-center font-semibold text-gray-900">
+            <ngx-charts-pie-chart [view]="view" [results]="personByEducation">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+          <div class="text-lg font-medium text-gray-500 truncate">
+            Pessoas por Sexo
+          </div>
+          <div class="mt-1 flex justify-center items-center font-semibold text-gray-900">
+            <ngx-charts-pie-chart [view]="view" [results]="personBySex">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+        <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+          <div class="text-lg font-medium text-gray-500 truncate">
+            Pessoas por Cor de Pele
+          </div>
+          <div class="mt-1 flex justify-center items-center font-semibold text-gray-900">
+            <ngx-charts-pie-chart [view]="view" [results]="personBySkinColor">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -97,6 +97,12 @@
               </tr>
               </tbody>
             </table>
+            <mat-paginator 
+              [length]="total"
+              [pageSize]="10"
+              (page)="handleGetPerson($event)"
+              aria-label="Select page">
+            </mat-paginator>
           </div>
         </div>
       </div>

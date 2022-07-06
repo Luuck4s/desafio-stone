@@ -114,10 +114,14 @@ export class ModalPersonComponent implements OnInit {
       let dataToSend = this.formPerson.value;
       if(this.selectedFather != null){
         dataToSend.fatherID = this.selectedFather.id;
+      }else {
+        dataToSend.fatherID = null;
       }
 
       if(this.selectedMother != null){
         dataToSend.motherID = this.selectedMother.id;
+      }else {
+        dataToSend.motherID = null;
       }
       
       return this.dialogRef.close(dataToSend);

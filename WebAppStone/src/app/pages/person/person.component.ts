@@ -7,6 +7,7 @@ import { PersonService } from 'src/app/shared/services/person.service';
 import { ModalPersonComponent } from 'src/app/shared/components/modal-person/modal-person.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TreeComponent } from 'src/app/shared/components/tree-view/tree-view.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-person',
@@ -31,6 +32,7 @@ export class PersonComponent implements OnInit {
   async getAllPerson() {
     this.personService.getAll({page: this.page}).subscribe({
       next: (data: ResultPerson) => {
+        console.log(data);
         this.person = data.items;
         this.total = data.total;
       },
@@ -100,5 +102,10 @@ export class PersonComponent implements OnInit {
     let ref = this.dialog.open(TreeComponent, {
       data: person,
     });
+  }
+
+  handleGetPerson(event: PageEvent){
+    this.page = event.pageIndex + 1;
+    this.getAllPerson();
   }
 }
