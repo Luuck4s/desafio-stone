@@ -1,0 +1,105 @@
+<main class="mt-16 md:mt-0">
+  <div class="w-full overflow-hidden px-20 my-20">
+    <div class="py-5 w-full flex justify-end items-end">
+      
+      <button
+        class="inline-block py-3 px-6 leading-none text-white bg-green-600 hover:bg-green-700 font-semibold rounded shadow mx-2"
+        (click)="handleCreate()" 
+      >
+        Adicionar pessoa
+      </button>
+    </div>
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Nome
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Escolaridade
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Sexo
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Cor
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Árvore Genealógica
+                </th>
+                <th scope="col" class="relative px-6 py-3">
+                  <span class="sr-only">Editar</span>
+                </th>
+              </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+              <tr *ngFor="let item of person; let i = index" [class]="i % 2 === 0 ? 'bg-gray-300' : 'bg-white'">
+                <td class="px-6 py-4 overflow-hidden ">
+                  <div class="text-sm font-medium text-gray-700">
+                    {{item.name}} {{item.lastName}}
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="text-sm font-medium text-gray-700">
+                      {{item.education}}
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="text-sm font-medium text-gray-700">
+                      {{item.sex}}
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="text-sm font-medium text-gray-700">
+                      {{item.skinColor}}
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <button class="inline-block py-1 px-3 leading-none text-white bg-blue-600 hover:bg-blue-700 font-semibold rounded shadow mx-2"
+                    (click)="handleShowTree(item)" >
+                      <mat-icon aria-hidden="false">account_tree</mat-icon>
+                    </button>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <button
+                    class="inline-block py-3 px-6 leading-none text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded shadow mx-2"
+                    (click)="handleEdit(item)" 
+                  >
+                    Editar
+                  </button>
+                  <button
+                    [disabled]="deleting.includes(item.id)"
+                    class="inline-block py-3 px-6 leading-none text-white bg-red-600 hover:bg-red-700 font-semibold rounded shadow"
+                    data-config-id="04_button" (click)="handleDelete(item)">
+                    <span class="flex items-center justify-center">
+                      Apagar
+
+                      <svg *ngIf="deleting.includes(item.id)"  class="animate-spin ml-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+
+                    </span>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

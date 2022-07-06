@@ -1,0 +1,22 @@
+<main class="mt-16 md:mt-0" mat-dialog-content>
+  <div class="w-full h-full">
+    <div #network></div>
+  </div>
+  <div class="mt-10 sm:mt-0">
+    <div class="mt-5 md:mt-0 md:col-span-2">
+      <div class="shadow overflow-hidden sm:rounded-md">
+        <div class="px-4 py-5 bg-gray-100 sm:p-6">
+          <div class="flex justify-end">
+            <div class="col-span-6 sm:col-span-6">
+              <mat-form-field>
+                <mat-label class="text-sm font-medium text-gray-700">Level</mat-label>
+                <input matInput type="number" [defaultValue]="1" (input)="handleGetTreeLevel($event)">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</main>

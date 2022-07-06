@@ -1,18 +1,52 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from "@angular/common/http";
+import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
+import { PersonComponent } from './pages/person/person.component';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import { ModalPersonComponent } from './shared/components/modal-person/modal-person.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { TreeComponent } from './shared/components/tree-view/tree-view.component';
+import {MatIconModule} from '@angular/material/icon';
+import { NavBarComponent } from './shared/components/navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PersonComponent,
+    ModalPersonComponent,
+    TreeComponent,
+    NavBarComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatSelectModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,    
+    HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatIconModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+    
+ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
