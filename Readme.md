@@ -34,6 +34,8 @@ formação superior e com Nome João.
 
  
 - .NET 6.0
+- MongoDB
+- SignalR
 
 
 **:computer: Web**
@@ -48,7 +50,10 @@ Será necessário ter instalado:
 - Docker
 - Docker Compose
 
-Para iniciar o projeto execute `$ docker-compose up` na pasta raiz `desafio-stone`.
+Para iniciar o projeto execute:
+`$ git clone https://github.com/Luuck4s/desafio-stone`
+`$ cd desafio-stone`
+`$ docker-compose up -d`
 
 
 ## :sparkles: Requisitos 
@@ -56,13 +61,12 @@ Para iniciar o projeto execute `$ docker-compose up` na pasta raiz `desafio-ston
  - [x]  Utilizar .NET Core em sua última versão para o desenvolvimento;
  - [x] Todo ambiente deve ser containerizado (Docker) e preferencialmente executado com todos
 serviços dependentes em um único comando;
- - [ ] Para o armazenamento das informações utilizar qualqluer banco NoSQL (Elasticsearch, MongoDB,
+ - [x] Para o armazenamento das informações utilizar qualqluer banco NoSQL (Elasticsearch, MongoDB,
 RavenDB, etc), da sua preferência;
- - [ ] Testes são muito importantes. Crie alguns casos de testes unitários (com uso de Mock) e de
+ - [x] Testes são muito importantes. Crie alguns casos de testes unitários (com uso de Mock) e de
 integração;
- - [ ] Ter um repositório organizado, documentação e fácil de utilizar, um ou poucos comandos para
+ - [x] Ter um repositório organizado, documentação e fácil de utilizar, um ou poucos comandos para
 levantar todo ambiente e suas dependências;
- - [ ] O repositório deve ser públlico e ter integração com qualquer serviço de CI (seja Azure DevOps,
+ - [x] O repositório deve ser públlico e ter integração com qualquer serviço de CI (seja Azure DevOps,
 AppVeyor, CircleCI, etc);
- - [ ] A aplicação tem que estar funcional e cumprir os requisitos que foram apresentados no desafio;
 

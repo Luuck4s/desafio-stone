@@ -2,6 +2,7 @@
 using Moq;
 using WebApiStone.Entities;
 using WebApiStone.Entities.Values;
+using WebApiStone.Hubs;
 using WebApiStone.Services;
 using WebApiStone.Settings;
 using Xunit;
@@ -14,6 +15,7 @@ namespace WebApiStone.Tests
         private Person PERSON_VALID = new(string.Empty, "Lucas", "Lima", SexValues.MALE, SkinColorValues.CAUCASIAN, EducationValues.HIGH_SCHOOL);
 
         private Mock<IDatabaseConnection> mockDatabaseConnection;
+        private Mock<IStatisticsHub> mockHub;
         private PersonService personService;
 
         public PersonTests()
@@ -24,7 +26,10 @@ namespace WebApiStone.Tests
             mockDatabaseConnection = new Mock<IDatabaseConnection>();
             mockDatabaseConnection.Setup(x => x.GetPersonCollection()).Returns(collection.Object);
 
-            personService = new PersonService(mockDatabaseConnection.Object);
+            mockHub = new Mock<IStatisticsHub>();
+            mockHub.Setup(x => x.NotifyAll());
+
+            personService = new PersonService(mockDatabaseConnection.Object, mockHub.Object);
         }
 
         [Fact]
