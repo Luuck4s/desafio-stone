@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApiStone.Services;
 using WebApiStone.Models;
+using WebApiStone.Hubs;
 
 namespace WebApiStone.Controllers;
 

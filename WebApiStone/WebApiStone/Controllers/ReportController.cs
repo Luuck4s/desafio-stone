@@ -20,4 +20,10 @@ public class ReportController : ControllerBase
     {
         return await _reportService.GetFamilyTree(personId, level);
     }
+
+    [HttpGet("")]
+    public async Task<ActionResult<ResultStatistics>> GetStatistics(string? name, string? skincolor, string? education, string? sex)
+    {
+        return await _reportService.GetStatistics(name, skincolor, education, sex);
+    }
 }

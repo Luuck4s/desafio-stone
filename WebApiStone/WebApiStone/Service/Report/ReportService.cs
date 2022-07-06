@@ -15,6 +15,11 @@ public class ReportService: IReportService
     }
 
 
+    public async Task<ResultStatistics> GetStatistics(string? name, string? skincolor, string? education, string? sex)
+    {
+        ResultStatistics result = await _personService.GetStatistics(name, skincolor, education, sex);
+        return result;
+    }
     public async Task<FamilyTree> GetFamilyTree(string id, int level)
     {
         List<FamilyTreePeople> familyTreePeople = await GetFamilyTreePeople(id, level);

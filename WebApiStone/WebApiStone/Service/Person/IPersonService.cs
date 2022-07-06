@@ -6,6 +6,8 @@ namespace WebApiStone.Services
     public interface IPersonService
     {
         public Task<ResultPerson> GetAll(int page, int perpage,string? name);
+
+        public Task<ResultStatistics> GetStatistics(string? name, string? skincolor, string? education, string? sex);
         public Task<Person?> GetById(string id);
         public Task<List<Person>> GetByIdParent(string id);
         public Task<Person> Create(Person person);
