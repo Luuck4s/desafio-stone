@@ -65,6 +65,17 @@ public class PersonService: IPersonService
     public async Task Update(string id, Person updatedBook) =>
         await _personCollection.ReplaceOneAsync(x => x.Id == id, updatedBook);
 
-    public async Task Delete(string id) =>
+    public async Task Delete(string id){
         await _personCollection.DeleteOneAsync(x => x.Id == id);
+
+        await _personCollection.UpdateManyAsync(
+            x => x.FatherID == id, 
+            Builders<Person>.Update.Set(p => p.FatherID, null)
+        );
+        await _personCollection.UpdateManyAsync(
+            x => x.MotherID == id, 
+            Builders<Person>.Update.Set(p => p.MotherID, null)
+        );
+    }
+        
 }
