@@ -51,9 +51,11 @@ Será necessário ter instalado:
 - Docker Compose
 
 Para iniciar o projeto execute:
-```$ git clone https://github.com/Luuck4s/desafio-stone```
-```$ cd desafio-stone```
-```$ docker-compose up -d```
+```
+$ git clone https://github.com/Luuck4s/desafio-stone
+$ cd desafio-stone
+$ docker-compose up -d
+```
 
 Para acessar o projeto:
 
