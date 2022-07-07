@@ -6,13 +6,15 @@
 	💚 Desafio Stone
 </h4>
 
-  
 <p  align="center">
 <a  href="#telescope-projeto">🔭 Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp
 <a  href="#computer-tecnologias"> 💻 Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a  href="#-getting-started">🤠 Getting Started </a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a  href="#sparkles-requisitos">:sparkles: Requisitos </a>
 </p>
+
+[![Build API](https://github.com/Luuck4s/desafio-stone/actions/workflows/pipelines-github-actions.yml/badge.svg)](https://github.com/Luuck4s/desafio-stone/actions/workflows/pipelines-github-actions.yml)
+
 
 ## :telescope: Projeto
  
